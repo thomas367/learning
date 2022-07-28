@@ -17,8 +17,8 @@ window.onload = function () {
     console.log(sessionStorage.getItem('keyItasdadasdemInferno'));
 
     // sessionStorage.key
-    console.log(sessionStorage.keyItemAlperen);
-    console.log(sessionStorage.keyItemAlsdsperen);
+    console.log(sessionStorage.keyItemInferno);
+    console.log(sessionStorage.keyItemInzzzferno);
 
     // sessionStorage[key]
     console.log(sessionStorage['i tem d d d d K ey']);
