@@ -1,6 +1,7 @@
 /**
  *
- * Facade pattern - provides an interface that simplifies complex functionalities
+ * Facade is a structural design pattern that provides a simplified interface to a library,
+ * a framework, or any other complex set of classes.
  *
  */
 
@@ -15,6 +16,7 @@ class ShopFacade {
         price = this.discount.calc(price);
         price = this.fees.calc(price);
         price += this.shipping.calc();
+
         return price;
     }
 }

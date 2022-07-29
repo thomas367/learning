@@ -1,12 +1,6 @@
 /**
  * 
- * Adapter Pattern
- * 
- * This is a structural pattern where the interface of one class is translated into another.
- * This pattern lets classes work together that could not otherwise because of incompatible interfaces.
- * 
- * This pattern is often used to create wrappers for new refactored APIs so that other existing old APIs
- * can still work with them.
+ * Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate.
  *  
  */
 

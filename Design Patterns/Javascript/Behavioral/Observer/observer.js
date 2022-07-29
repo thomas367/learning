@@ -1,7 +1,7 @@
 /**
- *
- * It s a publish/subscribe pattern which allows a number of observer objects to see an event.
- * See - Observables / Rxjs
+ * 
+ * Observer is a behavioral design pattern that lets you define a subscription mechanism to
+ * notify multiple objects about any events that happen to the object they’re observing.
  *
  */
 

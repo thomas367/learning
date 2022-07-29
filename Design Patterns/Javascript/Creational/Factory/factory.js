@@ -1,16 +1,18 @@
 /**
- *  
- * Factory define an interface for creating a single object, but let subclasses decide which class to instantiate.
- * Factory lets a class defer instantiation to subclasses.
+ * 
+ * Factory Method is a creational design pattern that provides an interface for creating
+ * objects in a superclass, but allows subclasses to alter the type of objects that will be created.
  *
  */
 
 class BmwFactory {
     create(type) {
-        if (type === 'X5')
+        if (type === 'X5') {
             return new Bmw(type, 108000, 300); //factory method define what to run before return
-        if (type === 'X6')
+        }
+        if (type === 'X6') {
             return new Bmw(type, 111000, 320);  //factory method define what to run before return
+        }
     }
 }
 

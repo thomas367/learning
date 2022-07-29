@@ -1,6 +1,7 @@
 /**
  *
- * It presents a way to access the elements of an object sequentially without exposing its underlying representation.
+ * Iterator is a behavioral design pattern that lets you traverse elements of a collection
+ * without exposing its underlying representation (list, stack, tree, etc.).
  *
  */
 

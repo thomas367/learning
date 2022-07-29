@@ -1,7 +1,7 @@
 /**
- *
- * Decorator pattern - The decorator pattern (also known as Wrapper, an alternative naming shared with the Adapter pattern) is a design pattern that allows the behavior to be added to an individual object, e
- * either statically or dynamically, without affecting the behavior of other objects from the same class.
+ * 
+ * Decorator is a structural design pattern that lets you attach new behaviors to
+ * objects by placing these objects inside special wrapper objects that contain the behaviors.
  *
  */
 

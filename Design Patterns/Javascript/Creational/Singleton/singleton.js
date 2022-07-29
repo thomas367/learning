@@ -1,8 +1,7 @@
 /**
- *
- * Singleton is a creational design pattern where only one instance of a class can exist.
- * If no instance of the singleton class exists then a new instance is created and returned
- * but if an instance already exists then the reference to the existing instance is returned.
+ * 
+ * Singleton is a creational design pattern that lets you ensure that a class has only 
+ * one instance, while providing a global access point to this instance.
  *
  */
 
@@ -18,9 +17,10 @@ class Singleton {
     constructor() {
         this.publicVariable = 'Public Variable';
 
-        if(! Singleton.instance){
+        if(!Singleton.instance){
             Singleton.instance = this;
         }
+
         return Singleton.instance;
     }
 

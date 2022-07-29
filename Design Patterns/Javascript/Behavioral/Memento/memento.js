@@ -1,7 +1,7 @@
 /**
- *
- * Memento pattern is about capturing and storing the current state of an object in a manner
- * that it can be restored later on in a smooth manner.
+ * 
+ * Memento is a behavioral design pattern that lets you save and restore the previous state
+ * of an object without revealing the details of its implementation.
  * 
  */
 

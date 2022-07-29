@@ -1,8 +1,7 @@
 /**
- *
- * Bridge pattern - allows two components, a client and a service, to work together
- * with each component having its own interface.
- * Bridge is a high-level architectural pattern and its main goal is to write better code through two levels of abstraction.
+ * 
+ * Bridge is a structural design pattern that lets you split a large class or a set of closely related
+ * classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.
  *
  */
 

@@ -1,8 +1,7 @@
 /**
- *
- * Flyweight pattern - The Flyweight pattern is a classical structural solution for optimizing code
- * that is repetitive, slow, and inefficiently shares data. It aims to minimize the use of memory
- * in an application.  - see memoization & cacheing
+ * 
+ * Flyweight is a structural design pattern that lets you fit more objects into the available amount
+ * of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
  *
  */
 
@@ -18,8 +17,10 @@ class colorFactory {
     }
     create(name) {
         let color = this.colors[name];
-        if(color) 
+        if(color) {
             return color;
+        }
+
         this.colors[name] = new Color(name);
         return this.colors[name];
     }

@@ -1,12 +1,15 @@
 /**
  *
- * An Abstract Factory provide an interface for creating families of related or
- * dependent objects without specifying their concrete classes.
+ * Abstract Factory is a creational design pattern that lets you produce families
+ * of related objects without specifying their concrete classes.
  *
  */
 
 function droidProducer(kind) {
-    if (kind === 'battle') return battleDroidFactory;
+    if (kind === 'battle') {
+        return battleDroidFactory;
+    }
+
     return pilotDroidFactory;
 }
 

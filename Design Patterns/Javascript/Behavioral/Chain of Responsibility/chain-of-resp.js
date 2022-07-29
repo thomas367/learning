@@ -1,8 +1,7 @@
 /**
- * 
- * The Chain of Responsibility pattern provides a chain of loosely coupled objects one of which can satisfy a request.
- * This pattern is essentially a linear search for an object that can handle a particular request.
- * An example of a chain-of-responsibility is event-bubbling in which an event propagates through a series of nested controls one of which may choose to handle the event.
+ *
+ * Chain of Responsibility is a behavioral design pattern that lets you pass requests along a chain of handlers.
+ * Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
  *
  */
 
@@ -23,6 +22,7 @@ class Discount {
         let none = new NoneDiscount();
         ndiscount.setNext(pdiscount);
         pdiscount.setNext(none);
+
         return ndiscount.exec(products);
     };
 }
@@ -38,8 +38,9 @@ class NumberDiscount {
 
     exec(products) {
         let result = 0;
-        if (products.length > 3)
+        if (products.length > 3) {
             result = 0.05;
+        }
 
         return result + this.next.exec(products);
     };
@@ -58,8 +59,9 @@ class PriceDiscount{
         let result = 0;
         let total = products.reduce((a, b)=> a + b);
 
-        if (total >= 500)
+        if (total >= 500) {
             result = 0.1;
+        }
 
         return result + this.next.exec(products);
     };

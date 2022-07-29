@@ -1,8 +1,8 @@
 /**
  * 
- * Command Pattern
- * Allows you to encapsulate actions in objects.
- * The key idea behind this pattern is to provide the means to decouple client from receiver
+ * Command is a behavioral design pattern that turns a request into a stand-alone object that
+ * contains all information about the request. This transformation lets you pass requests as a method arguments,
+ * delay or queue a request’s execution, and support undoable operations.
  *
  */
 

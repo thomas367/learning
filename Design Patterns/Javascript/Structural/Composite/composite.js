@@ -1,9 +1,7 @@
 /**
- *
- * Composite pattern
- * This is a structural design pattern that composes objects into tree-like structures to represent whole-part hierarchies.
- * In this pattern, each node in the tree-like structure can be either an individual object
- * or a composed collection of objects. Regardless, each node is treated uniformly.
+ * 
+ * Composite is a structural design pattern that lets you compose objects into tree
+ * structures and then work with these structures as if they were individual objects.
  *
  */
 

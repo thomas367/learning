@@ -1,7 +1,7 @@
 /**
- *
- * A Mediator is an object that coordinates interactions (logic and behavior) between multiple objects.
- * It makes decisions on when to call which objects, based on the actions (or inaction) of other objects and input.
+ * 
+ * Mediator is a behavioral design pattern that lets you reduce chaotic dependencies between objects.
+ * The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.
  *
  */
 
