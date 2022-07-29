@@ -6,24 +6,24 @@
 
 class ProductBuilder {
     constructor() {
-        this.name = 'A Product'
-        this.price = 9.99
-        this.category = 'other'
+        this.name = 'A Product';
+        this.price = 9.99;
+        this.category = 'other';
     }
 
     withName(name) {
-        this.name = name
-        return this
+        this.name = name;
+        return this;
     }
 
     withPrice(price) {
-        this.price = price
-        return this
+        this.price = price;
+        return this;
     }
 
     withCategory(category) {
-        this.category = category
-        return this
+        this.category = category;
+        return this;
     }
 
     build() {
