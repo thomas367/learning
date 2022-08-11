@@ -8,7 +8,7 @@
 """
 import os;
 
-scriptDir = os.path.dirname(__file__) # absolute dir the script is in
+scriptDir = os.path.dirname(__file__); # absolute dir the script is in
 absFilePath = os.path.join(scriptDir, 'story.txt');
 
 handler = open(absFilePath, 'r');
