@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\WithoutEncapsulation;
-
 class Dog
 {
     public int $weight = 1;

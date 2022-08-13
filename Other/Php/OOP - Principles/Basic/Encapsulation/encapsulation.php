@@ -7,10 +7,6 @@
  * and exposing public methods that we can use to access the data.
  */
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\Encapsulation;
-
 class Dog
 {
     // weight and mood can be managed only by a dog
@@ -53,11 +49,11 @@ $dog->pet();
 echo "After petting: $dog" . PHP_EOL;
 
 $newWeight = -1;
-$dog->setWeight(weight: $newWeight);
+$dog->setWeight($newWeight);
 echo "After setting weight to $newWeight unit(s): $dog" . PHP_EOL;
 
 $newWeight = 5;
-$dog->setWeight(weight: $newWeight);
+$dog->setWeight($newWeight);
 echo "After setting weight to $newWeight unit(s): $dog" . PHP_EOL;
 
 // Direct internal state modification is NOT possible, preventing from setting incorrect internal state:

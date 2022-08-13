@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\WithoutInheritance;
-
 class Student
 {
     public function __construct(private string $name, private int $grade) {}
@@ -27,9 +23,9 @@ class Teacher
 }
 
 echo 'Student:' . PHP_EOL;
-$student = new Student(name: 'Tom', grade: 10);
+$student = new Student('Tom', 10);
 echo $student->introduceYourself() . PHP_EOL;
 
 echo 'Teacher:' . PHP_EOL;
-$teacher = new Teacher(name: 'Lilith', subject: 'science');
+$teacher = new Teacher('Lilith', 'science');
 echo $teacher->introduceYourself() . PHP_EOL;

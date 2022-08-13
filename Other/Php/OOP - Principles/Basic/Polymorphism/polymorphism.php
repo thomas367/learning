@@ -4,10 +4,6 @@
  * Polymorphism means “many forms”. By its name, it is a feature that allows you to perform an action in multiple or different ways.
  */
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\Polymorphism;
-
 // In general it could also be a class
 interface Figure 
 {
@@ -47,9 +43,9 @@ class Printer
 $printer = new Printer();
 
 echo 'Rectangle:' . PHP_EOL;
-$rectangle = new Rectangle(a: 3, b: 4);
-$printer->displaySurface(figure: $rectangle);
+$rectangle = new Rectangle(3, 4);
+$printer->displaySurface($rectangle);
 
 echo 'Triangle:' . PHP_EOL;
-$triangle = new Triangle(a: 3, h: 4);
-$printer->displaySurface(figure: $triangle);
+$triangle = new Triangle(3, 4);
+$printer->displaySurface($triangle);

@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\WithoutPolymorphism;
-
 class Rectangle
 {
     public function __construct(private float $a, private float $b) {}
@@ -40,9 +36,9 @@ class Printer
 $printer = new Printer();
 
 echo 'Rectangle:' . PHP_EOL;
-$rectangle = new Rectangle(a: 3, b: 4);
-$printer->displayRectangleSurface(rectangle: $rectangle);
+$rectangle = new Rectangle(3, 4);
+$printer->displayRectangleSurface($rectangle);
 
 echo 'Triangle:' . PHP_EOL;
-$triangle = new Triangle(a: 3, h: 4);
-$printer->displayTriangleSurface(triangle: $triangle);
+$triangle = new Triangle(3, 4);
+$printer->displayTriangleSurface($triangle);

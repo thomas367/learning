@@ -7,10 +7,6 @@
  * This is the reason it is called ‘is-a relationship’ where the child is-a type of parent.
  */
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\Inheritance;
-
 // A class which is inherited from is called base, super or parent class
 // might be defined abstract if its instantiation is forbidden
 class Person 
@@ -29,7 +25,7 @@ class Student extends Person
 {
     public function __construct(string $name, private int $grade)
     {
-        parent::__construct(name: $name);
+        parent::__construct($name);
     }
 
     public function introduceYourself()
@@ -43,7 +39,7 @@ class Teacher extends Person
 {
     public function __construct(string $name, private string $subject)
     {
-        parent::__construct(name: $name);
+        parent::__construct($name);
     }
 
     public function introduceYourself()
@@ -54,9 +50,9 @@ class Teacher extends Person
 
 // Usage is identical as in without-inheritance.php:
 echo 'Student:' . PHP_EOL;
-$student = new Student(name: 'Tom', grade: 10);
+$student = new Student('Tom', 10);
 echo $student->introduceYourself() . PHP_EOL;
 
 echo 'Teacher:' . PHP_EOL;
-$teacher = new Teacher(name: 'Lilith', subject: 'science');
+$teacher = new Teacher('Lilith', 'science');
 echo $teacher->introduceYourself() . PHP_EOL;

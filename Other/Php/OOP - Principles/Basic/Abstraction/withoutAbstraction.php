@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
-namespace OOP\Principles\Basic\WithoutAbstraction;
-
 class Tea
 {
     public function boilWater()

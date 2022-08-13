@@ -6,9 +6,6 @@
  * This helps in reducing the operational complexity at the user-end.
  */
 
-declare(strict_types = 1);
-namespace OOP\Principles\Basic\Abstraction;
-
 class Tea
 {
     // Specific steps are unreachable for client code
