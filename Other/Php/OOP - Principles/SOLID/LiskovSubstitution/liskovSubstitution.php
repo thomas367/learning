@@ -29,7 +29,7 @@ class Duck extends Flyable implements Audible
 }
 
 // Requires only implementation of a method that makes sense
-class Ostrich implements Audible e
+class Ostrich implements Audible
 {
     public function makeSound()
     {
