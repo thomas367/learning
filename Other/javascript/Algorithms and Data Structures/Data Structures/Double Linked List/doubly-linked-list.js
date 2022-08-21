@@ -2,19 +2,20 @@
  * Linked lists are a type of data structure that store values in the form of a list. 
  * Within the list, each value is considered a node, and each node is connected with 
  * the following value in the list (or null in case the element is the last in the list) 
- * through a pointer.
- * In singly linked lists each node has a single pointer that indicates the next 
- * node on the list.
+ * through a pointer. 
+ * In double linked lists, each node has two pointers, one pointing to the next 
+ * node and another pointing to the previous node.
  */
 
-class SinglyLinkedListNode {
-    constructor(value, next = null) {
+class DoublyLinkedListNode {
+    constructor(value, next = null, prev = null) {
         this.value = value;
         this.next = next;
+        this.prev = prev;
     }
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -27,13 +28,12 @@ class SinglyLinkedList {
      * Then it returns the linked list.
      */ 
     push(value) {
-        const newNode = new SinglyLinkedListNode(value);
-
+        const newNode = new DoublyLinkedListNode(value, null, this.tail);
         if (!this.head) {
-            this.head = newNode;
+            this.head =newNode;
         } else {
             this.tail.next = newNode;
-        } 
+        }
 
         this.tail = newNode;
         this.length++;
@@ -50,25 +50,16 @@ class SinglyLinkedList {
             return undefined;
         }
 
-        let removedNode;
-
-        if (this.head === this.tail) {
-            removedNode = this.head;
-            this.head = null;
-            this.tail = null;
-        } else {
-            let currentNode = this.head;
-
-            while (currentNode.next !== this.tail) {
-                currentNode = currentNode.next;
-            }
-
-            removedNode = currentNode.next;
-            currentNode.next = null;
-            this.tail = currentNode;
-        }
-
+        const removedNode = this.tail;
+        this.tail = removedNode.prev;
+        removedNode.prev = null;
         this.length--;
+
+        if (!this.length) {
+            this.head = null;
+        } else {
+            this.tail.next = null;
+        }
 
         return removedNode;
     }
@@ -83,13 +74,15 @@ class SinglyLinkedList {
         }
 
         const removedNode = this.head;
-
-        if (this.head === this.tail) {
-            this.tail = null;
-        }
-
         this.head = removedNode.next;
+        removedNode.next = null;
         this.length--;
+
+        if (!this.length) {
+            this.tail = null;
+        } else {
+            this.head.prev = null;
+        }
 
         return removedNode;
     }
@@ -99,10 +92,14 @@ class SinglyLinkedList {
      * Then it returns the linked list.
      */
     unshift(value) {
-        this.head = new SinglyLinkedListNode(value, this.head);
+        const newNode = new DoublyLinkedListNode(value, this.head);
 
-        if (!this.length) {
-            this.tail = this.head;
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.head.prev = newNode;
+            this.head = newNode;
         }
 
         this.length++;
@@ -119,9 +116,19 @@ class SinglyLinkedList {
             return null;
         }
 
-        let currentNode = this.head;
+        if (index === 0) {
+            return this.head;
+        }
 
-        for (let i = 1; i <= index; i++) {
+        if (index === (this.length - 1)) {
+            return this.tail;
+        }
+
+        let currentNode = this.head;
+        for (let i = 0; i < this.length; i++) {
+            if (i === index) {
+                return currentNode;
+            }
             currentNode = currentNode.next;
         }
 
@@ -152,7 +159,7 @@ class SinglyLinkedList {
      * invalid (less than 0 or greater than the length of the list).
      */
     insert(index, value) {
-        if (index < 0 || index > this.length) {
+        if (index < 0 || index >= this.length) {
             return false;
         }
 
@@ -170,9 +177,11 @@ class SinglyLinkedList {
             return false;
         }
 
-        prevNode.next = new SinglyLinkedListNode(value, prevNode.next);
+        const newNode = new DoublyLinkedListNode(value, prevNode.next, prevNode);
+        prevNode.next = newNode;
+        newNode.next.prev = newNode;
         this.length++;
-
+    
         return true;
     }
 
@@ -193,37 +202,36 @@ class SinglyLinkedList {
             return this.pop();
         }
 
-        const prevNode = this.get(index - 1);
-
-        if (!prevNode) {
+        const removedNode = this.get(index);
+    
+        if (!removedNode) {
             return undefined;
         }
 
-        const removedNode = prevNode.next;
-        prevNode.next = removedNode.next;
+        removedNode.prev.next = removedNode.next;
+        removedNode.next.prev = removedNode.prev;
+        removedNode.next = null;
+        removedNode.prev = null;
         this.length--;
-
+    
         return removedNode;
-    }
-
+      }
+    
     /**
      * The reverse method reverses the linked list in place.
      * Then it returns the linked list.
      */
     reverse() {
         let currentNode = this.head;
-        let nextNode = currentNode.next;
-        this.tail = currentNode;
-        currentNode.next = null;
+        const tail = this.tail;
 
-        while (nextNode) {
-            const tempNode = nextNode.next;
-            nextNode.next = currentNode;
-            currentNode = nextNode;
-            nextNode = tempNode;
+        while (currentNode) {
+            [currentNode.next, currentNode.prev] = [currentNode.prev, currentNode.next];
+            currentNode = currentNode.prev;
         }
 
-        this.head = currentNode;
+        this.tail = this.head;
+        this.head = tail;
 
         return this;
     }
@@ -243,16 +251,18 @@ class SinglyLinkedList {
             return this;
         }
 
-        const prevNode = this.get(index - 1);
+        const node = this.get(index);
 
-        if (!prevNode) {
+        if (!node) {
             return undefined;
         }
 
         this.tail.next = this.head;
-        this.head = prevNode.next;
-        this.tail = prevNode;
-        prevNode.next = null;
+        this.head.prev = this.tail;
+        this.head = node;
+        this.tail = node.prev;
+        this.tail.next = null;
+        this.head.prev = null;
 
         return this;
     }
@@ -291,43 +301,43 @@ class SinglyLinkedList {
     }
 }
 
-const singleLinkedList = new SinglyLinkedList();
+const doubleLinkedList = new SinglyLinkedList();
 
-singleLinkedList.push(1);
-singleLinkedList.push(2);
-singleLinkedList.push(3);
-singleLinkedList.push(4);
-singleLinkedList.push(5);
-singleLinkedList.push(6);
-singleLinkedList.print(); // [ 1, 2, 3, 4, 5, 6 ]
+doubleLinkedList.push(1);
+doubleLinkedList.push(2);
+doubleLinkedList.push(3);
+doubleLinkedList.push(4);
+doubleLinkedList.push(5);
+doubleLinkedList.push(6);
+doubleLinkedList.print(); // [ 1, 2, 3, 4, 5, 6 ]
 //--------------------------------------------------------------
-singleLinkedList.pop();
-singleLinkedList.print(); // [ 1, 2, 3, 4, 5 ]
+doubleLinkedList.pop();
+doubleLinkedList.print(); // [ 1, 2, 3, 4, 5 ]
 //--------------------------------------------------------------
-singleLinkedList.unshift(1000);
-singleLinkedList.print(); // [ 1000, 1, 2, 3, 4, 5 ]
+doubleLinkedList.unshift(1000);
+doubleLinkedList.print(); // [ 1000, 1, 2, 3, 4, 5 ]
 //--------------------------------------------------------------
-singleLinkedList.shift();
-singleLinkedList.print(); // [ 1, 2, 3, 4, 5 ]
+doubleLinkedList.shift();
+doubleLinkedList.print(); // [ 1, 2, 3, 4, 5 ]
 //--------------------------------------------------------------
-console.log(singleLinkedList.get(2).value); // 3
+console.log(doubleLinkedList.get(2).value); // 3
 //--------------------------------------------------------------
-singleLinkedList.set(2, 100);
-console.log(singleLinkedList.get(2).value); // 100
-singleLinkedList.print(); // [1, 2, 100, 4, 5 ]
+doubleLinkedList.set(2, 100);
+console.log(doubleLinkedList.get(2).value); // 100
+doubleLinkedList.print(); // [1, 2, 100, 4, 5 ]
 //--------------------------------------------------------------
-singleLinkedList.insert(3, 10000);
-singleLinkedList.print(); // [ 1, 2, 100, 10000, 4, 5 ]
+doubleLinkedList.insert(3, 10000);
+doubleLinkedList.print(); // [ 1, 2, 100, 10000, 4, 5 ]
 //--------------------------------------------------------------
-singleLinkedList.remove(3);
-singleLinkedList.print(); // [ 1, 2, 100, 4, 5 ]
+doubleLinkedList.remove(3);
+doubleLinkedList.print(); // [ 1, 2, 100, 4, 5 ]
 //--------------------------------------------------------------
-singleLinkedList.reverse();
-singleLinkedList.print(); // [ 5, 4, 100, 2, 1 ]
+doubleLinkedList.reverse();
+doubleLinkedList.print(); // [ 5, 4, 100, 2, 1 ]
 //--------------------------------------------------------------
-singleLinkedList.rotate(-2); // negative number rotate to right 
-singleLinkedList.print(); // [ 2, 1, 5, 4, 100 ]
+doubleLinkedList.rotate(-2); // negative number rotate to right 
+doubleLinkedList.print(); // [ 2, 1, 5, 4, 100 ]
 //--------------------------------------------------------------
-singleLinkedList.rotate(3); // positive number rotate to left 
-singleLinkedList.print(); // [4, 100, 2, 1, 5]
+doubleLinkedList.rotate(3); // positive number rotate to left 
+doubleLinkedList.print(); // [4, 100, 2, 1, 5]
 //--------------------------------------------------------------
