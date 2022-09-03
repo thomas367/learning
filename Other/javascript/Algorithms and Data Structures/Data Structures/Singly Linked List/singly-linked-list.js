@@ -217,7 +217,7 @@ class SinglyLinkedList {
         currentNode.next = null;
 
         while (nextNode) {
-            const tempNode = nextNode.next;
+            let tempNode = nextNode.next;
             nextNode.next = currentNode;
             currentNode = nextNode;
             nextNode = tempNode;
