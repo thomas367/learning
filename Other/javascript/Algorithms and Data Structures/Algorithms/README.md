@@ -8,7 +8,6 @@ a set of rules that precisely define a sequence of operations.
 * **Recursion**
   * [Factorial]
   * [Fibonacci Number]
-  * [N Queens Problem]
   * [Power]
 * **Searches**
   * [Binary Search]
