@@ -129,13 +129,13 @@ var8="def"
 # [ -k $file ] # If yes returns true, otherwise false.
 
 # -p (File is a named pipe)
-# [ -p $file ]  # If yes returns true, otherwise false.
+# [ -p $file ] # If yes returns true, otherwise false.
 
 # -t (File descriptor is open and associated with a terminal)
-# [ -t $file ]  # If yes returns true, otherwise false.
+# [ -t $file ] # If yes returns true, otherwise false.
 
 # -u (File has its Set User ID (SUID) bit set)
-# [ -u $file ]  # If yes returns true, otherwise false.
+# [ -u $file ] # If yes returns true, otherwise false.
 
 # -r (File is readable)	
 # [ -r $file ] # If yes returns true, otherwise false.

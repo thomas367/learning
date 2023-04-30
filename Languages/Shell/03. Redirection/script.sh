@@ -21,7 +21,7 @@ grep -R foo /etc/ &> result.txt # Standard output and standard error are merged 
 grep -R foo /etc/ > result.txt 2>&1 # Redirects standard output to the result file, then redirects standard error to the same file as standard output using the "2>&1" operator.
 
 # Warning: The order of redirection is important. 
-#The below command redirects standard error to standard output and then redirects standard output to result.
+# The below command redirects standard error to standard output and then redirects standard output to result.
 # This mean that standard output is empty, and only error messages will be redirected to the file.
 grep -R foo /etc/ 2>&1 > result.txt
 
